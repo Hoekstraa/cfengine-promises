@@ -1,0 +1,26 @@
+bundle agent apache
+{
+  vars:
+      "document_root" string => "/";
+
+      # Site specific configuration - put it in this file
+      "site_http_conf" string => "/var/cfengine/masterfiles/files/httpd.conf";
+
+      # Software base
+      "match_package" slist => {"apache2",
+                                "apache2-mod_php7",
+                                "apache2-prefork",
+                                "php7"};
+  packages:
+      "$(match_package)"
+      package_module => zypper,
+      policy => "present",
+      classes => if_ok("apache_installed");
+
+  services:
+      "apache2" service_policy => "start";
+
+  reports:
+    !apache_installed.on::
+      "Apache httpd could not be installed";
+}
