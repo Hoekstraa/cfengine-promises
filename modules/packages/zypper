@@ -1,4 +1,4 @@
-#!/var/cfengine/bin/python
+#!/usr/bin/env python
 
 #####################################################################################
 # Copyright 2016 Normation SAS
