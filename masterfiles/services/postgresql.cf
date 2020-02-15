@@ -1,0 +1,19 @@
+bundle agent apache
+{
+  vars:
+      # Software base
+      "match_package" slist => {"postgresql"};
+
+  packages:
+      "$(match_package)"
+      package_module => zypper,
+      policy => "present",
+      classes => if_ok("installed");
+
+  services:
+      "postgresql" service_policy => "start";
+
+  reports:
+    !installed.on::
+      "Postgresql could not be installed";
+}

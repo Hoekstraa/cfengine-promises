@@ -1,0 +1,19 @@
+bundle agent apache
+{
+  vars:
+      # Software base
+      "match_package" slist => {"389-ds"};
+
+  packages:
+      "$(match_package)"
+      package_module => zypper,
+      policy => "present",
+      classes => if_ok("installed");
+
+  services:
+      "389-ds" service_policy => "start";
+
+  reports:
+    !installed.on::
+      "389-ds could not be installed";
+}
