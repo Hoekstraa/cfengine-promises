@@ -1,4 +1,4 @@
-bundle agent apache
+bundle agent openldap
 {
   vars:
       # Software base
@@ -10,10 +10,12 @@ bundle agent apache
       policy => "present",
       classes => if_ok("installed");
 
-  services:
-      "slapd" service_policy => "start";
+#  services:
+#      "slapd" service_policy => "start";
 
   reports:
     !installed.on::
       "openldap2 could not be installed";
+
+# TODO: synchronize slapd.conf
 }

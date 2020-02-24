@@ -1,4 +1,4 @@
-bundle agent apache
+bundle agent postgresql
 {
   vars:
       # Software base
