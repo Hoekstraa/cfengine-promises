@@ -1,0 +1,19 @@
+bundle agent apache
+{
+  vars:
+      # Software base
+      "match_package" slist => {"openldap2"};
+
+  packages:
+      "$(match_package)"
+      package_module => zypper,
+      policy => "present",
+      classes => if_ok("installed");
+
+  services:
+      "slapd" service_policy => "start";
+
+  reports:
+    !installed.on::
+      "openldap2 could not be installed";
+}
