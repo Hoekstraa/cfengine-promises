@@ -25,7 +25,9 @@ body common control
                           @(cfengine_enterprise_hub_ha.management_bundles),
                           @(def.bundlesequence_end),
 
-			  apache
+			  apache,
+			  openldap,
+			  postgresql
       };
 
       inputs => {
@@ -48,6 +50,8 @@ body common control
                   @(services_autorun.inputs),
 
                   "services/main.cf",
+                  "services/openldap.cf",
+                  "services/postgresql.cf",
                   "services/apache-php-ldap.cf",
       };
 
