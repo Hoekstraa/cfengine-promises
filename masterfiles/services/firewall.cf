@@ -1,0 +1,5 @@
+bundle agent firewall
+{
+  services:
+      "firewalld" service_policy => "stop";
+}
