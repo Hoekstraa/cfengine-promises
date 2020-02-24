@@ -23,4 +23,10 @@ bundle agent apache
   reports:
     !apache_installed.on::
       "Apache httpd could not be installed";
+
+  files:
+      "/etc/apache2"
+      copy_from => local_cp("/var/cfengine/masterfiles/files/apache"),
+      depth_search => recurse("inf");
+
 }

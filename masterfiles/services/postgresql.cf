@@ -2,7 +2,7 @@ bundle agent postgresql
 {
   vars:
       # Software base
-      "match_package" slist => {"postgresql"};
+      "match_package" slist => {"postgresql, postgresql-server"};
 
   packages:
       "$(match_package)"

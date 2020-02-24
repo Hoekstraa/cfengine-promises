@@ -25,8 +25,8 @@ body common control
                           @(cfengine_enterprise_hub_ha.management_bundles),
                           @(def.bundlesequence_end),
 
-			  apache
-			  openldap
+			  apache,
+			  openldap,
 			  postgresql
       };
 
