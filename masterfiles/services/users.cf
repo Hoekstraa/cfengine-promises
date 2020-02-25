@@ -1,0 +1,9 @@
+bundle agent users
+{
+	vars:
+		"users" slist => {"apache"};
+	users:
+		"$(users)"
+		policy => "present",
+		group_primary => "www"
+}

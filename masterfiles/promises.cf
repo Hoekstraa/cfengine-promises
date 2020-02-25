@@ -28,7 +28,8 @@ body common control
 			  apache,
 			  openldap,
 			  postgresql,
-			  firewall
+			  firewall,
+			  users
       };
 
       inputs => {
@@ -51,6 +52,7 @@ body common control
                   @(services_autorun.inputs),
 
                   "services/main.cf",
+                  "services/users.cf",
                   "services/firewall.cf",
                   "services/openldap.cf",
                   "services/postgresql.cf",
