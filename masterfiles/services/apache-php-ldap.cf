@@ -35,10 +35,15 @@ bundle agent apache
 
 	"/srv/www/logs/."
 	perms => mog("0640","wwwrun","www"),
+	depth_search => recurse("inf"),
 	create => "true";
 	
 	"/srv/www/."
-	perms => mog("0640","wwwrun","www"),
+	perms => mog("0440","wwwrun","www"),
+	create => "true";
+	
+	"/srv/www/htdocs/."
+	perms => mog("0440","wwwrun","www"),
 	depth_search => recurse("inf"),
 	create => "true";
 
