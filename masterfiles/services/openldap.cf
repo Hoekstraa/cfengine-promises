@@ -17,5 +17,11 @@ bundle agent openldap
     !installed.on::
       "openldap2 could not be installed";
 
-# TODO: synchronize slapd.conf
+  files:
+	"/etc/openldap/slapd.conf"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/etc_openldap_slapd.conf");
+
+
+	"/etc/sysconfig/openldap"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/etc_sysconfig_openldap");
 }
