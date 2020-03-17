@@ -1,16 +1,18 @@
 bundle agent firewall
 {
-  vars:
-	"match_package" slist => {"iptables"};
-
-  packages:
-	"$(match_package)"
-	package_module => zypper,
-	policy => "present";
   services:
-      "firewalld" service_policy => "stop";
+      "firewalld" service_policy => "start";
 
   files:
-	"/etc/sysconfig/iptables"
-	copy_from => local_cp("/var/cfengine/masterfiles/files/sysconfig_iptables");
+	"/etc/firewalld/firewalld.conf"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/firewalld/firewalld.conf");
+
+	"/etc/firewalld/zones/external.xml"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/firewalld/external.xml"),
+	classes => if_repaired("firewalld_config_changed");
+
+  commands:
+	firewalld_config_changed::
+	  "/usr/bin/firewall-cmd --reload";
+
 }

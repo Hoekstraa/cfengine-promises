@@ -1,0 +1,14 @@
+bundle agent ntp
+{
+  vars:
+      # Software base
+      "match_package" slist => {"ntp"};
+
+  packages:
+      "$(match_package)"
+      package_module => zypper,
+      policy => "present";
+
+  services:
+      "ntpd" service_policy => "start";
+}
