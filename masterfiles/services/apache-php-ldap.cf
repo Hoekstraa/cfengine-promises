@@ -53,4 +53,8 @@ bundle agent apache
 
 	"/etc/php7/fpm/php-fpm.d/www.conf"
 	copy_from => local_cp("/etc/php7/fpm/php-fpm.d/www.conf.default");
+
+	# Certificates
+	"/etc/ssl/certs/apache-selfsigned.crt"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/apache/apache-selfsigned.crt");
 }

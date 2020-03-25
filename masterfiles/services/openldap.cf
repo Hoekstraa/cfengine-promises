@@ -2,7 +2,7 @@ bundle agent openldap
 {
   vars:
       # Software base
-      "match_package" slist => {"openldap2"};
+      "match_package" slist => {"openldap2", "openldap2-client"};
 
   packages:
       "$(match_package)"
@@ -10,8 +10,8 @@ bundle agent openldap
       policy => "present",
       classes => if_ok("installed");
 
-#  services:
-#      "slapd" service_policy => "start";
+  services:
+      "slapd" service_policy => "start";
 
   reports:
     !installed.on::
@@ -19,9 +19,19 @@ bundle agent openldap
 
   files:
 	"/etc/openldap/slapd.conf"
-	copy_from => local_cp("/var/cfengine/masterfiles/files/etc_openldap_slapd.conf");
-
+	copy_from => local_cp("/var/cfengine/masterfiles/files/etc_openldap_slapd.conf"),
+	perms => mog("0660","root","ldap");
 
 	"/etc/sysconfig/openldap"
-	copy_from => local_cp("/var/cfengine/masterfiles/files/etc_sysconfig_openldap");
+	copy_from => local_cp("/var/cfengine/masterfiles/files/etc_sysconfig_openldap"),
+	perms => mog("0660","root","ldap");
+
+	"/var/lib/ldap/."
+	perms => mog("0700","ldap","ldap"),
+	depth_search => recurse("inf"),
+        create => "true";
+
+	"/usr/lib/openldap/start"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/usr_lib_openldap_start"),
+	perms => mog("0700","root","root");
 }

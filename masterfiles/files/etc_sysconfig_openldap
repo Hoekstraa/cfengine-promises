@@ -10,7 +10,7 @@
 # make sense when either OPENLDAP_START_LDAPS or OPENLDAP_START_LDAPI is set 
 # "yes".
 #
-OPENLDAP_START_LDAP="no"
+OPENLDAP_START_LDAP="yes"
 
 ## Type:           yesno
 ## Default:        no
