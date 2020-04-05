@@ -19,6 +19,7 @@ bundle agent postgresql
 
   files:
         "/var/lib/pgsql/data/pg_hba.conf"
-        copy_from => local_cp("/var/cfengine/masterfiles/files/pg_hba.conf");
+        copy_from => local_cp("/var/cfengine/masterfiles/files/pg_hba.conf"),
+	perms => mog("0600","postgres","postgres");
 
 }
