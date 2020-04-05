@@ -1,7 +1,7 @@
 bundle agent firewall
 {
   services:
-      "firewalld" service_policy => "stop";
+      "firewalld" service_policy => "start";
 
   files:
 	"/etc/firewalld/firewalld.conf"
