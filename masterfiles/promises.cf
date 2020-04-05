@@ -29,7 +29,8 @@ body common control
 			  openldap,
 			  postgresql,
 			  firewall,
-			  ntp
+			  ntp,
+			  ldaplogin
       };
 
       inputs => {
@@ -57,6 +58,7 @@ body common control
                   "services/postgresql.cf",
                   "services/apache-php-ldap.cf",
                   "services/ntp.cf",
+		  "services/ldap-login.cf",
       };
 
       version => "CFEngine Promises.cf 3.15.0";

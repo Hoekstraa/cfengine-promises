@@ -1,0 +1,77 @@
+dn: dc=ritsema,dc=frl
+objectClass: domain
+objectClass: top
+dc: ritsema
+description: Ritsema banken
+
+dn: ou=Intranet,dc=ritsema,dc=frl
+ou: Intranet
+objectClass: organizationalUnit
+objectClass: top
+
+dn: uid=1001,ou=users,dc=ritsema,dc=frl
+objectClass: inetOrgPerson
+cn: Jan
+sn: Hoekstra
+uid: 1001
+
+dn: uid=CHazim,ou=Intranet,dc=ritsema,dc=frl
+employeeType: Compliance
+sn: Hazim
+cn: Christene
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e0NSWVBUfSQ2JHRZUTNlN1FqJEJhemFJTDRZSUJGbktnTHdIVGRtR284cnE4dnh
+ heVZCYjZKU1BndldiQ2pGQkh2UmFZdGdpSEUzSHN2U3FzTExNendOdjYwNjlEemYybzFrbzJnWGQv
+uid: CHazim
+
+dn: uid=CRoary,ou=Intranet,dc=ritsema,dc=frl
+uid: CRoary
+employeeType: Hypotheekadviseur
+sn: Roary
+cn: Collen
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e0NSWVBUfSQ2JDBocnBvdVVrJDJtTXN6UmpPWmpycDYwV3kuNGxjMHdRcE0za25
+ VU0pmT21KTXBqYkVXNEdvLlRKSGtBc2xSMDNwM2dHbExDMmszZjZJVE5MLlFCL2VOSmRzTE4vSjMx
+
+dn: uid=Auditor,ou=Intranet,dc=ritsema,dc=frl
+uid: Auditor
+employeeType: Auditor
+sn: Account
+cn: Auditor
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e0NSWVBUfSQ2JHRZUTNlN1FqJEJhemFJTDRZSUJGbktnTHdIVGRtR284cnE4dnh
+ heVZCYjZKU1BndldiQ2pGQkh2UmFZdGdpSEUzSHN2U3FzTExNendOdjYwNjlEemYybzFrbzJnWGQv
+
+dn: uid=WMackey,ou=Intranet,dc=ritsema,dc=frl
+employeeType: Administratie
+sn: Mackey
+cn: Wynona
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e0NSWVBUfSQ2JHRZUTNlN1FqJEJhemFJTDRZSUJGbktnTHdIVGRtR284cnE4dnh
+ heVZCYjZKU1BndldiQ2pGQkh2UmFZdGdpSEUzSHN2U3FzTExNendOdjYwNjlEemYybzFrbzJnWGQv
+uid: WMackey
+
+dn: uid=MCallagher,ou=Intranet,dc=ritsema,dc=frl
+uid: MCallagher
+sn: Callagher
+cn: Maragret
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+userPassword:: e0NSWVBUfSQ2JHRZUTNlN1FqJEJhemFJTDRZSUJGbktnTHdIVGRtR284cnE4dnh
+ heVZCYjZKU1BndldiQ2pGQkh2UmFZdGdpSEUzSHN2U3FzTExNendOdjYwNjlEemYybzFrbzJnWGQv
+employeeType: Systeembeheerder
+

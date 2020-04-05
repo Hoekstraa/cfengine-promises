@@ -1,0 +1,24 @@
+bundle agent ldaplogin 
+{
+  vars:
+      # Software base
+      "match_package" slist => {"sssd-ldap",
+				"sssd"};
+  packages:
+      "$(match_package)"
+      package_module => zypper,
+      policy => "present",
+      classes => if_ok("ldap-login-installed");
+
+  services:
+      "sssd" service_policy => "start";
+
+#  reports:
+#    !ldap-login-installed.on::
+#      "LDAP login could not be installed";
+
+  files:
+	"/etc/sssd/sssd.conf"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/etc_sssd_sssd.conf"),
+	perms => mog("0600","root","root");
+}
