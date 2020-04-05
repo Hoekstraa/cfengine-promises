@@ -16,4 +16,9 @@ bundle agent postgresql
   reports:
     !installed.on::
       "Postgresql could not be installed";
+
+  files:
+        "/var/lib/pgsql/data/pg_hba.conf"
+        copy_from => local_cp("/var/cfengine/masterfiles/files/pg_hba.conf");
+
 }
