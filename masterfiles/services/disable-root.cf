@@ -1,0 +1,23 @@
+bundle agent disableroot
+{
+  vars:
+      # Software base
+      "match_package" slist => {"sudo"};
+
+  packages:
+      "$(match_package)"
+      package_module => zypper,
+      policy => "present";
+
+  services:
+      "sshd" service_policy => "start";
+
+  files:
+	"/etc/ssh/ssh_config"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/sshd_config"),
+	perms => mog("0644","root","root");
+
+	"/etc/sudoers"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/sudoers"),
+	perms => mog("0440","root","root");
+}
