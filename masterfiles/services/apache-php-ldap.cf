@@ -13,7 +13,8 @@ bundle agent apache
                                 "php7",
 				"php7-fpm",
 				"php7-fastcgi",
-				"php7-ldap"};
+				"php7-ldap",
+				"php7-pgsql"};
   packages:
       "$(match_package)"
       package_module => zypper,
