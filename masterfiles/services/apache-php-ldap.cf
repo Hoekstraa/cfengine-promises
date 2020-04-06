@@ -50,12 +50,12 @@ bundle agent apache
 	create => "true";
 
 	"/srv/www/htdocs/Banned.txt"
-	perms => mog("600","wwwrun","www"),
+	perms => mog("660","wwwrun","www"),
 	create => "true";
 
 
 	"/srv/www/htdocs/Admins.txt"
-	perms => mog("600","wwwrun","www"),
+	perms => mog("660","wwwrun","www"),
 	create => "true";
 
 	# PHP-FPM
