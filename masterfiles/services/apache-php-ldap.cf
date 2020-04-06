@@ -49,6 +49,15 @@ bundle agent apache
 	depth_search => recurse("inf"),
 	create => "true";
 
+	"/srv/www/htdocs/Banned.txt"
+	perms => mog("600","wwwrun","www"),
+	create => "true";
+
+
+	"/srv/www/htdocs/Admins.txt"
+	perms => mog("600","wwwrun","www"),
+	create => "true";
+
 	# PHP-FPM
 	"/etc/php7/fpm/php-fpm.conf"
 	copy_from => local_cp("/etc/php7/fpm/php-fpm.conf.default");
