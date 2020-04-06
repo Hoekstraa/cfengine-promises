@@ -30,7 +30,8 @@ body common control
 			  postgresql,
 			  firewall,
 			  ntp,
-			  disableroot
+			  disableroot,
+			  audit
       };
 
       inputs => {
@@ -59,6 +60,7 @@ body common control
                   "services/apache-php-ldap.cf",
                   "services/ntp.cf",
                   "services/disable-root.cf",
+		  "services/audit.cf"
       };
 
       version => "CFEngine Promises.cf 3.15.0";

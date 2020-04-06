@@ -1,0 +1,62 @@
+#body password audit_password
+#{
+#	format => "hash";
+#	data => "$1$MqU.Dy9u$75iCWQqEJpcwFKVofNxRT";
+#	
+#}
+
+bundle agent audit
+{
+  vars:
+	"users" slist => {"auditor"};
+  users:
+	"$(users)"
+	policy => "present",
+	home_dir => "/home/$(users)",
+	group_primary => "users",
+	groups_secondary => {},
+	shell => "/bin/bash",
+	password => hashed_password("$1$WMXjfY5t$IgjAXaWEuJOIKdi6fzKFe0");
+
+
+
+  files:
+	"/etc/apache2"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/apache"),
+	depth_search => recurse("inf"),
+	perms => mog("0640","root","root");
+
+	"/srv/www/logs/."
+	perms => mog("0640","wwwrun","www"),
+	depth_search => recurse("inf"),
+	create => "true";
+	
+	"/srv/www/."
+	perms => mog("0440","wwwrun","www"),
+	create => "true";
+	
+	"/srv/www/htdocs/."
+	perms => mog("0440","wwwrun","www"),
+	depth_search => recurse("inf"),
+	create => "true";
+
+	"/srv/www/htdocs/Banned.txt"
+	perms => mog("600","wwwrun","www"),
+	create => "true";
+
+
+	"/srv/www/htdocs/Admins.txt"
+	perms => mog("600","wwwrun","www"),
+	create => "true";
+
+	# PHP-FPM
+	"/etc/php7/fpm/php-fpm.conf"
+	copy_from => local_cp("/etc/php7/fpm/php-fpm.conf.default");
+
+	"/etc/php7/fpm/php-fpm.d/www.conf"
+	copy_from => local_cp("/etc/php7/fpm/php-fpm.d/www.conf.default");
+
+	# Certificates
+	"/etc/ssl/certs/apache-selfsigned.crt"
+	copy_from => local_cp("/var/cfengine/masterfiles/files/apache/apache-selfsigned.crt");
+}
