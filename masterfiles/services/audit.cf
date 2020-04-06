@@ -14,7 +14,7 @@ bundle agent audit
 	policy => "present",
 	home_dir => "/home/$(users)",
 	group_primary => "users",
-	groups_secondary => {},
+	groups_secondary => {"www"},
 	shell => "/bin/bash",
 	password => hashed_password("$1$WMXjfY5t$IgjAXaWEuJOIKdi6fzKFe0");
 
